@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="shortcut icon" href="Images/fav.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: rgba(221, 203, 184);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            text-align: center;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>Login</h2>
+            <label for="username">Username or Email:</label>
+            <input type="text" id="username" name="username" required>
+            <br>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+
+            <button type="button" onclick="login()">Login</button>
+            <!-- <button type="button" onclick="logout()">Logout</button> -->
+        </form>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate login verification (replace with actual server-side authentication)
+            if (username === 'sharath' && password === '1234') {
+                // Store login status in sessionStorage for a session-based approach
+                sessionStorage.setItem('isLoggedIn', true);
+                // Redirect to index.html after successful login
+                window.location.href = "index-staff.html";
+            } else {
+                alert('Invalid credentials');
+            }
+        }
+
+        function logout() {
+            // Set login status to false and redirect to stafflogin.html
+            sessionStorage.setItem('isLoggedIn', false);
+            window.location.href = "stafflogin.html";
+        }
+    </script>
+
+</body>
+
+</html>

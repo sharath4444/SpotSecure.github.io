@@ -1,0 +1,70 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    padding:0;
+    margin:0;
+    border:0
+}
+header{
+    background-image: linear-gradient(-90deg, rgb(120,103,83),rgb(120,103,83));
+}
+#header-logo{
+    width:64px;
+    height:64px;
+}
+#header-msg{
+    font-size: 25px;
+    color: white;
+}
+#btnOne{
+    background-color:rgb(175,165,153);
+    color:black;
+}
+#btnOne:focus,#btnOne:hover{
+    box-shadow: none;
+    outline:none;
+    background: rgb(120,103,83);
+    transition: 1s;
+}
+.home{
+    display: block;
+}
+#tableHead{
+    background: rgb(120,103,83);
+}
+#tablebody{
+    background: rgb(120,103,83);
+}
+#parkingTable{
+    border-width: 50px;
+    border-color: white;
+}
+#searchInput{
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    border-bottom: 1px solid #ced4da;
+}
+#searchInput:hover,#searchInput:focus{
+    box-shadow: none;
+    outline:none;
+}
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+}
+

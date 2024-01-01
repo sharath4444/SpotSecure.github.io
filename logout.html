@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/style.css"> <!-- You can include your own CSS file -->
+    <link rel="shortcut icon" href="Images/fav.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: rgba(221, 203, 184);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .dashboard-container {
+            text-align: center;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <h2>Welcome to the Dashboard</h2>
+
+        <!-- Your dashboard content goes here -->
+
+        <!-- Logout button -->
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            // Add any additional logout logic here if needed.
+
+            // Redirect to slot.html
+            window.location.href = "slot.html";
+        }
+    </script>
+
+</body>
+
+</html>
