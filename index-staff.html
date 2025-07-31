@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="shortcut icon" href="Images/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="Images/parking.jpeg" type="image/x-icon">
     <title>SPOTSECURE</title>
     <script src="https://pushapi.infobip.com/push-lib.min.js"></script>
     <!-- <script src="https://unpkg.com/nexmo-client@1.4.0/dist/nexmoClient.js"></script> -->
@@ -30,7 +30,7 @@
 
     <header class="shadow">
         <div class="header-content d-flex justify-content-center p-2">
-            <img src="./Images/parking.svg" alt="" id="header-logo">
+            <img src="./Images/parking.jpeg" alt="" id="header-logo">
             <div id="header-msg" class="ml-5 align-self-center">SPOT SECURE</div>
         </div>
     </header>
@@ -38,7 +38,6 @@
     <div class="form-container mt-5">
         <form class="w-50 mx-auto" id="entryForm">
             <h5 class="text-center">Add Car to Parking Slot</h5>
-            <!-- ... existing form content ... -->
         </form>
     </div>
 
@@ -70,7 +69,6 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            // Simulate login verification (replace with actual server-side authentication)
             if (username === 'sharath' && password === '1234') {
                 // Store login status in sessionStorage for a session-based approach
                 sessionStorage.setItem('isLoggedIn', true);
@@ -81,14 +79,10 @@
             }
         }
 
-        // Function to handle logout
         function logout() {
-            // Clear login status from sessionStorage
             sessionStorage.removeItem('isLoggedIn');
-            // Redirect to index.html after logout
             window.location.href = "index.html";
         }
-        // Check login status and show/hide actions column
         if (sessionStorage.getItem('isLoggedIn')) {
             const actionsColumn = document.getElementById('actionsColumn');
             if (actionsColumn) {

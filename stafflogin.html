@@ -4,102 +4,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Staff Login - SpotSecure</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/bootstrap.min.css">
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="shortcut icon" href="Images/fav.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            background-color: rgba(221, 203, 184);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100vh;
             margin: 0;
+            font-family: 'Roboto', sans-serif;
         }
 
         .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
             text-align: center;
-            width: 300px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
-        form {
-            display: flex;
-            flex-direction: column;
+        .login-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
-        label {
-            margin-top: 10px;
+        .login-header {
+            margin-bottom: 2rem;
         }
 
-        input {
-            margin-bottom: 10px;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
+        .login-header h2 {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
 
-        button {
-            padding: 10px;
-            background-color: #4CAF50;
+        .login-header p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-group .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .input-group .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .input-group .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+            z-index: 10;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 3px;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
         }
 
-        button:hover {
-            background-color: #45a049;
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-login:hover::before {
+            left: 100%;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-login:active {
+            transform: translateY(-1px);
+        }
+
+        .back-link {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .back-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            color: #5a6fd8;
+        }
+
+        .error-message {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 0.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .demo-credentials {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #2c3e50;
+        }
+
+        .demo-credentials h6 {
+            margin-bottom: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .demo-credentials p {
+            margin: 0.25rem 0;
+            font-family: monospace;
         }
     </style>
 </head>
 
 <body>
-
     <div class="login-container">
+        <div class="login-header">
+            <h2><i class="fas fa-user-shield"></i> Staff Login</h2>
+            <p>Access the administrative panel</p>
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-triangle"></i> Invalid credentials
+        </div>
+
         <form id="loginForm">
-            <h2>Login</h2>
-            <label for="username">Username or Email:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
+            <div class="form-group">
+                <label for="username">
+                    <i class="fas fa-user"></i> Username
+                </label>
+                <div class="input-group">
+                    <i class="fas fa-user input-icon"></i>
+                    <input type="text" id="username" name="username" class="form-control" 
+                           placeholder="Enter your username" required>
+                </div>
+            </div>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
+            <div class="form-group">
+                <label for="password">
+                    <i class="fas fa-lock"></i> Password
+                </label>
+                <div class="input-group">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" name="password" class="form-control" 
+                           placeholder="Enter your password" required>
+                </div>
+            </div>
 
-            <button type="button" onclick="login()">Login</button>
-            <!-- <button type="button" onclick="logout()">Logout</button> -->
+            <button type="button" class="btn-login" onclick="login()">
+                <span id="loginText">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </span>
+                <span id="loadingSpinner" class="loading"></span>
+            </button>
         </form>
+
+        <div class="demo-credentials">
+            <h6><i class="fas fa-info-circle"></i> Demo Credentials</h6>
+            <p><strong>Username:</strong> sharath</p>
+            <p><strong>Password:</strong> 1234</p>
+        </div>
+
+        <div class="back-link">
+            <a href="index.html">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
     </div>
 
     <script>
         function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            const loginText = document.getElementById('loginText');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const loginBtn = document.querySelector('.btn-login');
 
-            // Simulate login verification (replace with actual server-side authentication)
-            if (username === 'sharath' && password === '1234') {
-                // Store login status in sessionStorage for a session-based approach
-                sessionStorage.setItem('isLoggedIn', true);
-                // Redirect to index.html after successful login
-                window.location.href = "index-staff.html";
-            } else {
-                alert('Invalid credentials');
+            // Hide error message
+            errorMessage.style.display = 'none';
+
+            // Validate inputs
+            if (!username || !password) {
+                showError('Please fill in all fields');
+                return;
             }
+
+            // Show loading state
+            loginText.style.display = 'none';
+            loadingSpinner.style.display = 'inline-block';
+            loginBtn.disabled = true;
+
+            // Simulate login delay
+            setTimeout(() => {
+                if (username === 'sharath' && password === '1234') {
+                    // Store login status
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    
+                    // Show success and redirect
+                    loginBtn.style.background = 'linear-gradient(135deg, #27ae60 0%, #2ecc71 100%)';
+                    loginText.innerHTML = '<i class="fas fa-check"></i> Success!';
+                    loginText.style.display = 'inline';
+                    loadingSpinner.style.display = 'none';
+                    
+                    setTimeout(() => {
+                        window.location.href = "index-staff.html";
+                    }, 1000);
+                } else {
+                    // Show error
+                    showError('Invalid username or password');
+                    loginText.style.display = 'inline';
+                    loadingSpinner.style.display = 'none';
+                    loginBtn.disabled = false;
+                }
+            }, 1000);
         }
 
-        function logout() {
-            // Set login status to false and redirect to stafflogin.html
-            sessionStorage.setItem('isLoggedIn', false);
-            window.location.href = "stafflogin.html";
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+            errorMessage.style.display = 'block';
+            
+            // Hide error after 5 seconds
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 5000);
         }
+
+        // Handle Enter key press
+        document.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+
+        // Add input focus effects
+        document.querySelectorAll('.form-control').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.querySelector('.input-icon').style.color = '#667eea';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.querySelector('.input-icon').style.color = '#7f8c8d';
+            });
+        });
     </script>
-
 </body>
-
 </html>

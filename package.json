@@ -1,0 +1,57 @@
+{
+  "name": "spotsecure",
+  "version": "1.0.0",
+  "description": "A modern, responsive parking management system built with HTML, CSS, and JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "build": "echo 'No build process required for static files'",
+    "test": "echo 'No tests specified'",
+    "lint": "echo 'No linting configured'"
+  },
+  "keywords": [
+    "parking",
+    "management",
+    "vehicle",
+    "tracking",
+    "spotsecure",
+    "html",
+    "css",
+    "javascript",
+    "bootstrap",
+    "responsive"
+  ],
+  "author": "SpotSecure Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/spotsecure.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/spotsecure/issues"
+  },
+  "homepage": "https://github.com/yourusername/spotsecure#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "files": [
+    "index.html",
+    "index-staff.html",
+    "stafflogin.html",
+    "T&C.html",
+    "logout.html",
+    "README.md",
+    "CSS/",
+    "JS/",
+    "Images/"
+  ]
+} 
